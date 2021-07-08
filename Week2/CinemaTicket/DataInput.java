@@ -22,13 +22,13 @@ public class DataInput {
         System.out.println("--------------------------");
         System.out.print("Film id giriniz: ");
 
-        int id = scanner.nextInt();
-        for (Movie movies : movieList) {
+        int id = scanner.nextInt();  
+        for (Movie movies : movieList) {  
             if (id == movies.id) {
-                customer.selectedMovie = movies;
+                customer.selectedMovie = movies; // Eğer seçilen filmin id'si movieList'teki id'lerinden birine eşitse müşterinin seçtiği film olarak atanıyor.
             }
         }
-        if (customer.selectedMovie == null) {
+        if (customer.selectedMovie == null) { // listede olmayan bir id girilirse tekrar girmesi için fonksiyon tekrar çağrılıyor. geçerli bir id ise hesaplama fonk. çağrılyr.
             System.out.println("Yanlış id girildi. Tekrar deneyiniz.");
             getData(movieList);
         } else TicketSales.calculate(customer);
