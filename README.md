@@ -1,6 +1,6 @@
 # KODLUYORUZ - 95. AnkaraJavaBootCamp
 ---
-### *WEEK 1
+### WEEK 1
 - Fibonacci Series
 - TermGradeCalculation
 - Greengrocer
@@ -15,7 +15,7 @@
     - Muz: 0,95 TL
     - Patlıcan : 5,00 TL
 ---
-### *WEEK 2
+### WEEK 2
 - StationeryStock
 
     Bir kırtasiye dükkanına ürünler geliyor.
