@@ -21,9 +21,9 @@
     Bir kırtasiye dükkanına ürünler geliyor.
     
     Kırtasiyeci kalem, silgi gibi malzemelerin kaydını sisteme girecek.
-        - Toplam kaç adet ürün aldı?
-        - Hangi üründen kaç adet aldı?
-        - Kaç çeşit ürünü var?
+    - Toplam kaç adet ürün aldı?
+    - Hangi üründen kaç adet aldı?
+    - Kaç çeşit ürünü var?
     
 - TermGradeCalculation
 - CinemaTicket
