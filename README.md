@@ -13,9 +13,10 @@
     - Domates : 1,11 TL
     - Muz: 0,95 TL
     - Patlıcan : 5,00 TL
-
+---
 ### WEEK 2
 - StationeryStock
+- 
     Bir kırtasiye dükkanına ürünler geliyor.
     
     Kırtasiyeci kalem, silgi gibi malzemelerin kaydını sisteme girecek.
