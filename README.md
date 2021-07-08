@@ -1,9 +1,9 @@
 # KODLUYORUZ - 95. AnkaraJavaBootCamp
 ---
 ### WEEK 1
-- *Fibonacci Series
-- *TermGradeCalculation
-- *Greengrocer
+- Fibonacci Series
+- TermGradeCalculation
+- Greengrocer
     
     Java ile kullanıcıların manavdan almış oldukları ürünlerin kilogram değerlerine göre toplam tutarını ekrana yazdıran programı yazın.
 
@@ -16,7 +16,7 @@
     - Patlıcan : 5,00 TL
 ---
 ### WEEK 2
-- *StationeryStock
+- StationeryStock
 
     Bir kırtasiye dükkanına ürünler geliyor.
     
@@ -25,8 +25,8 @@
     - Hangi üründen kaç adet aldı?
     - Kaç çeşit ürünü var?
     
-- *TermGradeCalculation
-- *CinemaTicket
+- TermGradeCalculation
+- CinemaTicket
     - 8 yaş altı için %10
     - 18 ve 25 yaş arası %5 indirim
     - ayrıca Korku filmi seçilmişse ayrıca %10 indirim
