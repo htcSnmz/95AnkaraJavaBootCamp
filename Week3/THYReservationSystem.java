@@ -2,7 +2,7 @@ package Week3;
 
 import java.util.Scanner;
 
-public class THYReservationSystem extends BaseReservationSystem implements BaseReservationService {
+public class THYReservationSystem extends BaseReservationSystem {
     public THYReservationSystem() {
     }
 
