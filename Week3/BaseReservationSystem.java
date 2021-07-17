@@ -1,6 +1,6 @@
 package Week3;
 
-public abstract class BaseReservationSystem implements BaseReservationService{
+public abstract class BaseReservationSystem {
 
     private int seatCount;
     private boolean[] seats;
