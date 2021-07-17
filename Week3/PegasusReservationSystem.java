@@ -3,7 +3,7 @@ package Week3;
 import java.util.Random;
 import java.util.Scanner;
 
-public class PegasusReservationSystem extends BaseReservationSystem implements BaseReservationService {
+public class PegasusReservationSystem extends BaseReservationSystem {
 
     public PegasusReservationSystem() {
     }
