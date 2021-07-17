@@ -30,3 +30,10 @@
     - 8 yaş altı için %10
     - 18 ve 25 yaş arası %5 indirim
     - Ayrıca korku filmi seçilmişse ayrıca %10 indirim
+ ---
+ ### WEEK 3
+ 
+ ![hw3](https://user-images.githubusercontent.com/19350791/126033456-3c048179-f58d-4f82-88f8-c7dfc463b779.png)
+ ![hw2](https://user-images.githubusercontent.com/19350791/126033462-6f69f98b-0e11-4fa6-984f-9a62078f40dd.png)
+
+ 
