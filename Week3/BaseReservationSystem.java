@@ -37,7 +37,7 @@ public abstract class BaseReservationSystem implements BaseReservationService {
     }
 
     public boolean economyIsFull(boolean[] seats) {
-        for (int i = 5; i < seats.length; i++) {
+        for (int i = BUSINESS_BOUNDARY; i < seats.length; i++) {
             if (!seats[i]) {
                 return false;
             }
@@ -46,7 +46,7 @@ public abstract class BaseReservationSystem implements BaseReservationService {
     }
 
     public boolean businessIsFull(boolean[] seats) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < BUSINESS_BOUNDARY; i++) {
             if (!seats[i]) {
                 return false;
             }
