@@ -37,7 +37,7 @@ public abstract class BaseReservationSystem implements BaseReservationService {
     }
 
     public boolean economyIsFull(boolean[] seats) {
-        for (int i = BUSINESS_BOUNDARY; i < seats.length; i++) {
+        for (int i = BUSINESS_BOUNDARY - 1; i < seats.length; i++) {
             if (!seats[i]) {
                 return false;
             }
