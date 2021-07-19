@@ -26,11 +26,11 @@ public class Flight {
                     System.out.println("Sistemden çıkılıyor.");
                     return;
                 case 1:
-                    BaseReservationService thyReservationService = new THYReservationSystem();
+                    BaseReservationService thyReservationService = thyReservation;
                     thyReservationService.createReservation(thyReservation);
                     break;
                 case 2:
-                    BaseReservationService pegasusReservationService = new PegasusReservationSystem();
+                    BaseReservationService pegasusReservationService = pegasusReservation;
                     pegasusReservationService.createReservation(pegasusReservation);
                     break;
                 default:
