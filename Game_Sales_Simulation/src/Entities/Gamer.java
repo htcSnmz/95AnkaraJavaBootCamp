@@ -2,7 +2,7 @@ package Entities;
 
 import Abstract.Entity;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Gamer extends Entity {
@@ -14,9 +14,12 @@ public class Gamer extends Entity {
     private List<Campaign> campaigns;
 
     public Gamer() {
+        this.games = games = new ArrayList<>();
+        this.campaigns = campaigns = new ArrayList<>();
     }
 
-    public Gamer(String firstName, String lastName, String eMail, String password) {
+    public Gamer(String firstName, String lastName, String eMail, String password, List<Game> games, List<Campaign> campaigns) {
+        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.eMail = eMail;
@@ -70,4 +73,11 @@ public class Gamer extends Entity {
         this.campaigns = campaigns;
     }
 
+    @Override
+    public String toString() {
+        return "Ad: " + this.getFirstName() +
+                "\nSoyad: " + this.getLastName() +
+                "\nE-posta: " + this.geteMail() +
+                "\n Parola: " + this.getPassword();
+    }
 }
