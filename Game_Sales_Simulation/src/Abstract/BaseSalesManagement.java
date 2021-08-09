@@ -6,6 +6,6 @@ import Entities.Gamer;
 
 
 public interface BaseSalesManagement {
-   void buy(Gamer gamer, Game game);
-   void campaignBuy(Gamer gamer,Campaign campaign);
+   void buy(Gamer gamer, List<Game> gameListe);
+   void campaignBuy(Gamer gamer, List<Campaign> campaignList);
 }
