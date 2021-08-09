@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class GamerManager implements BaseGamerService {
 
+    Scanner scan = new Scanner(System.in);
     private List<Gamer> gamerList;
 
     public GamerManager(List<Gamer> gamerList) {
@@ -16,40 +17,64 @@ public class GamerManager implements BaseGamerService {
 
     @Override
     public void save(Gamer gamer) {
+        System.out.println("Adınızı girin:");
+        gamer.setFirstName(scan.nextLine());
+        System.out.println("Soyadınızı girin:");
+        gamer.setLastName(scan.nextLine());
+        System.out.println("E-posta adresinizi girin:");
+        gamer.seteMail(scan.nextLine());
+        System.out.println("Parolanızı oluşturun:");
+        gamer.setPassword(scan.nextLine());
         gamerList.add(gamer);
         System.out.println(gamer.getFirstName() + " kaydınız gerçekleştirildi.");
     }
 
     @Override
     public void update(Gamer gamer) {
-        Scanner scan = new Scanner(System.in);
-
-        System.out.println("Güncellemek istediğiniz bilgiyi seçin\n'A'-AD  'S'-SOYAD   'M'-MAIL   'P'-PAROLA");
-        char choose = scan.nextLine().charAt(0);
-        System.out.println("Yeni değeri girin");
-        String newVar = scan.nextLine();
-        switch (choose) {
-            case 'A':
-                gamer.setFirstName(newVar);
-                break;
-            case 'S':
-                gamer.setLastName(newVar);
-                break;
-            case 'M':
-                gamer.seteMail(newVar);
-                break;
-            case 'P':
-                gamer.setPassword(newVar);
-                break;
-            default:
-                System.out.println("Hatalı seçim yaptınız.");
+        String NewVar;
+        System.out.println("Güncellemek istediğiniz bilgiyi seçin.\n1-AD  2-SOYAD   3-MAIL   4-PAROLA");
+        int choose = scan.nextInt();
+        if(choose == 1){
+            System.out.println("Yeni değeri girin:");
+            NewVar = scan.next();
+            gamer.setFirstName(NewVar);
+        }else if(choose == 2){
+            System.out.println("Yeni değeri girin:");
+            NewVar = scan.next();
+            gamer.setLastName(NewVar);
+        }else if(choose == 3){
+            System.out.println("Yeni değeri girin:");
+            NewVar = scan.next();
+            gamer.seteMail(NewVar);
+        }else if(choose == 4){
+            System.out.println("Yeni değeri girin:");
+            NewVar = scan.next();
+            gamer.setPassword(NewVar);
+        }else{
+            System.out.println("Hatalı seçim yaptınız");
+            update(gamer);
         }
-        System.out.println("Bilgileriniz güncellendi " + gamer.getFirstName());
+        System.out.println("Bilgileriniz güncellendi.");
     }
 
     @Override
     public void delete(Gamer gamer) {
         gamerList.remove(gamer);
-        System.out.println("Kayıt silindi");
+        System.out.println("Kayıt silindi.");
+    }
+
+    @Override
+    public Gamer login() {
+        System.out.println("Kayıtlı e-posta adresinizi girin:");
+        String mail = scan.next();
+        scan.nextLine();
+        System.out.println("Parolanızı girin:");
+        String password = scan.nextLine();
+        for (Gamer gamers : gamerList) {
+            if (gamers.getPassword().equals(password) && gamers.geteMail().equals(mail)) {
+                return gamers;
+            }
+        }
+        return null;
     }
 }
