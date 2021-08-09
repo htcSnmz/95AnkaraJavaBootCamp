@@ -17,7 +17,6 @@ public class Start {
     private List<Campaign> campaignList;
     private List<Gamer> gamerList;
 
-
     public Start(BaseGamerService gamerService, BaseSalesManagement salesManagement, List<Game> gameList,
                  List<Gamer> gamerList, List<Campaign> campaignList) {
         this.gamerService = gamerService;
@@ -28,82 +27,68 @@ public class Start {
     }
 
     public void startProgram() {
-
-
-        System.out.println("\n1-KAYIT OL     2-OYUN SATIN AL     3-KAMPANYALI OYUN SATIN AL     4-ÇIKIŞ");
+        System.out.println("\n1-KAYIT OL     2-OTURUM AÇ     0-ÇIKIŞ");
 
         Scanner scan = new Scanner(System.in);
         int choose = scan.nextInt();
-        if (choose == 4) {
-            System.out.println("Sistemden çıkılıyor.");
+        if (choose == 0) {
+            System.out.println("Sistemden çıkılıyor...");
             return;
         } else if (choose == 1) {
-            register();
-        } else if (choose == 2 || choose == 3) {
-
-            gameSale(choose);
+            Gamer gamer = new Gamer();
+            gamerService.save(gamer);
+            showMenu(gamer);
+        } else if (choose == 2) {
+            Gamer gamer = gamerService.login();
+            if (gamer != null) {
+                System.out.println("Merhaba " + gamer.getFirstName());
+                showMenu(gamer);
+            } else {
+                System.out.println("E-posta ya da şifre hatalı. Ya da sistemde kaydınız yok.");
+                startProgram();
+            }
         } else {
-            System.out.println("Yanlış seçim yapıldı");
+            System.out.println("Yanlış seçim yaptınız. Tekrar deneyin.");
             startProgram();
         }
-
-
     }
 
-    public void gameSale(int choose) {
+    public void showMenu(Gamer gamer) {
+        System.out.println("\n1- OYUN SATIN AL" +
+                "\n2- KAMPANYALI OYUN SATIN AL" +
+                "\n3- KAYITLI OYUNLARIMI GÖSTER     " +
+                "\n4- BİLGİLERİMİ GÜNCELLE" +
+                "\n5- KAYDIMI SİL" +
+                "\n6- PROFİLİMİ GÖRÜNTÜLE" +
+                "\n0- OTURUMU KAPAT");
 
-        System.out.println("Sırasıyla e-mail ve parolanızı girin:");
-        String mail = scan.nextLine();
-        String password = scan.nextLine();
+        int choose = scan.nextInt();
 
-        for (Gamer gamers : gamerList) {
-            if (gamers.getPassword().equals(password) && gamers.geteMail().equals(mail)) {
-                Gamer gamer = gamers;
-                if (choose == 2) {
-                    int i = 0;
-                    for (Game games : gameList) {
-                        System.out.println(i + "--> " + games.getName() + " " + games.getPrice() + " TL");
-                        i++;
-                    }
-                    System.out.println("Oyunlar listelendi. Bir seçim yapın.");
-                    int gameChoose = scan.nextInt();
-                    salesManagement.buy(gamer, gameList.get(gameChoose));
-                    startProgram();
-                } else if (choose == 3) {
-                    int i = 0;
-                    for (Campaign campaigns : campaignList) {
-                        System.out.println(i + "--> " + campaigns.getName() + " % " + campaigns.getDiscountRate() + " indirimli");
-                        i++;
-                    }
-                    System.out.println("Kampanyalı oyunlar listelendi. Bir seçim yapın.");
-                    int campaingGameChoose = scan.nextInt();
-                    salesManagement.campaignBuy(gamer, campaignList.get(campaingGameChoose));
-                    startProgram();
-                }
-            }
-
+        if (choose == 0) {
+            System.out.println("Oturumunuz kapatıldı.\n");
+            startProgram();
+        } else if (choose == 1) {
+            salesManagement.buy(gamer, gameList);
+            showMenu(gamer);
+        } else if (choose == 2) {
+            salesManagement.campaignBuy(gamer, campaignList);
+            showMenu(gamer);
+        } else if (choose == 3) {
+            gamerService.showGames(gamer);
+            showMenu(gamer);
+        } else if (choose == 4) {
+            gamerService.update(gamer);
+            gamerService.showProfile(gamer);
+            showMenu(gamer);
+        } else if (choose == 5) {
+            gamerService.delete(gamer);
+            startProgram();
+        } else if (choose == 6) {
+            gamerService.showProfile(gamer);
+            showMenu(gamer);
+        } else {
+            System.out.println("Yanlış seçim yaptınız. Tekrar deneyin.");
+            showMenu(gamer);
         }
-        System.out.println("Kullanıcı adı ya da parolanız yanlış. Veya sistemde kaydınız yok.");
-        startProgram();
     }
-
-    public void register() {
-
-        Gamer gamer = new Gamer();
-        System.out.println("Adınızı girin:");
-        gamer.setFirstName(scan.nextLine());
-        System.out.println("Soyadınızı girin:");
-        gamer.setLastName(scan.nextLine());
-        System.out.println("Mailinizi girin:");
-        gamer.seteMail(scan.nextLine());
-        System.out.println("Parolanızı girin:");
-        gamer.setPassword(scan.nextLine());
-        gamerService.save(gamer);
-        startProgram();
-    }
-
 }
-
-
-
-
