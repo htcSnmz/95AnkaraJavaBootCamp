@@ -1,6 +1,8 @@
 package Concrate;
 
 import Abstract.BaseGamerService;
+import Entities.Campaign;
+import Entities.Game;
 import Entities.Gamer;
 
 import java.util.List;
@@ -31,26 +33,27 @@ public class GamerManager implements BaseGamerService {
 
     @Override
     public void update(Gamer gamer) {
-        String NewVar;
+        int newVar;
+        String strNewVar;
         System.out.println("Güncellemek istediğiniz bilgiyi seçin.\n1-AD  2-SOYAD   3-MAIL   4-PAROLA");
         int choose = scan.nextInt();
-        if(choose == 1){
+        if (choose == 1) {
             System.out.println("Yeni değeri girin:");
-            NewVar = scan.next();
-            gamer.setFirstName(NewVar);
-        }else if(choose == 2){
+            strNewVar = scan.next();
+            gamer.setFirstName(strNewVar);
+        } else if (choose == 2) {
             System.out.println("Yeni değeri girin:");
-            NewVar = scan.next();
-            gamer.setLastName(NewVar);
-        }else if(choose == 3){
+            strNewVar = scan.next();
+            gamer.setLastName(strNewVar);
+        } else if (choose == 3) {
             System.out.println("Yeni değeri girin:");
-            NewVar = scan.next();
-            gamer.seteMail(NewVar);
-        }else if(choose == 4){
+            strNewVar = scan.next();
+            gamer.seteMail(strNewVar);
+        } else if (choose == 4) {
             System.out.println("Yeni değeri girin:");
-            NewVar = scan.next();
-            gamer.setPassword(NewVar);
-        }else{
+            strNewVar = scan.next();
+            gamer.setPassword(strNewVar);
+        } else {
             System.out.println("Hatalı seçim yaptınız");
             update(gamer);
         }
@@ -76,5 +79,26 @@ public class GamerManager implements BaseGamerService {
             }
         }
         return null;
+    }
+
+    @Override
+    public void showProfile(Gamer gamer) {
+        String profile = gamer.toString();
+        System.out.println(profile);
+    }
+
+    @Override
+    public void showGames(Gamer gamer) {
+        System.out.println("KAYDOLDUĞUNUZ OYUNLAR");
+        System.out.println("------------------------");
+        for (Game games : gamer.getGames()) {
+            System.out.println(games.getName());
+        }
+        System.out.println("\n");
+        System.out.println("KAYDOLDUĞUNUZ KAMPANYALI OYUNLAR");
+        System.out.println("------------------------");
+        for (Campaign campaigns : gamer.getCampaigns()) {
+            System.out.println(campaigns.getName());
+        }
     }
 }
